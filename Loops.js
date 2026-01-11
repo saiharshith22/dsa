@@ -121,4 +121,63 @@ const coundDigits = (n) => {
 
 // console.log(coundDigits(-999));
 
+// palindrome
 
+function palndromeStr(str) {
+  // console.log(str.split("").reverse().join(""));
+  str = String(str);
+  let str2 = "";
+  for (let i = str.length - 1; i >= 0; i--) {
+    str2 += str[i];
+  }
+  return str === str2;
+}
+// console.log(palndromeStr(121));
+
+// better approach
+function isPalindrome(str) {
+  str = String(str);
+  let left = 0;
+  let right = str.length - 1;
+
+  while (left < right) {
+    if (str[left] !== str[right]) {
+      return false;
+    }
+    left++;
+    right--;
+  }
+
+  return true;
+}
+// console.log(isPalindrome("madam"));
+
+function isPalindrome2(num) {
+  let n = num;
+  let rev = 0;
+  if (num < 0) return false;
+  while (num > 0) {
+    reminder = num % 10;
+    rev = 10 * rev + reminder;
+    num = Math.floor(num / 10);
+  }
+  return n === rev;
+}
+// console.log(isPalindrome2(121));
+
+function reverseNumber(num) {
+  let sign = Math.sign(num); // 1 or -1
+  num = Math.abs(num);
+
+  let reversed = 0;
+  while (num > 0) {
+    let digit = num % 10;
+    reversed = reversed * 10 + digit;
+    num = Math.floor(num / 10);
+  }
+
+  return reversed * sign;
+}
+
+// console.log(reverseNumber(-123));
+// console.log(reverseNumber(456));
